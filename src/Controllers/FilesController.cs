@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Amazon.S3;
 using Amazon.S3.Model;
 
-using dog_api.Models;
+using dog_api.Models.Infra;
 
 namespace dog_api.Controllers;
 

@@ -1,0 +1,11 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=${DataBase__Username}
+      - POSTGRES_PASSWORD=${DataBase__Password}
+      - POSTGRES_DB=${DataBase__DateBase}
+    ports:
+      - "5432:5432"
+    restart: always
