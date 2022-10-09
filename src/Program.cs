@@ -3,6 +3,7 @@ using Npgsql;
 using Microsoft.EntityFrameworkCore;
 
 using dog_api.Models.App;
+using dog_api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,11 @@ var dbBuilder = new NpgsqlConnectionStringBuilder()
 };
 
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(dbBuilder.ConnectionString));
+
+// add repos to di container
+builder.Services.AddScoped<IDogImageFileRepo, S3DogImageFileRepo>();
+builder.Services.AddScoped<IDogImageDataRepo, DogImagesEFCoreRepo>();
+builder.Services.AddScoped<IDogImageRepo, DogImageRepo>();
 
 var app = builder.Build();
 
