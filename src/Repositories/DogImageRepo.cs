@@ -24,7 +24,7 @@ public class DogImageRepo : IDogImageRepo
 
     public async Task<string> Add(IFormFile file)
     {
-        var guid = new Guid();
+        var guid = Guid.NewGuid();
         await _fileRepo.Upload(file, guid);
         await _metadataRepo.AddDogImage(guid, file.FileName, file.ContentType); //TODO handle errors
         return guid.ToString();

@@ -4,7 +4,7 @@ using dog_api.Repositories;
 
 namespace dog_api.Controllers;
 
-[Route("api/files")]
+[Route("api/dog-images")]
 [ApiController]
 public class DogImageController : ControllerBase    //TODO add error handling
 {

@@ -27,7 +27,7 @@ public class DogImagesEFCoreRepo : IDogImageDataRepo
             Id = id,
             FileType = filetype,
             Name = filename,
-            TimeAdded = DateTime.Now
+            TimeAdded = DateTime.UtcNow
         };
         await _context.AddAsync(dogImage);
         await _context.SaveChangesAsync();
