@@ -17,6 +17,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
 builder.Services.AddAWSService<IAmazonS3>();
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer(options =>
+    {
+        options.Audience = builder.Configuration["Authentication:Cognito:ClientId"];
+        options.Authority = builder.Configuration["Authentication:Cognito:AuthorityURL"];
+    });
+
 // bind database options using the options pattern
 var dbOptions = new DataBaseOptions();
 builder.Configuration.GetSection(DataBaseOptions.Section).Bind(dbOptions);
@@ -48,6 +55,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

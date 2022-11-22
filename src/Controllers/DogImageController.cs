@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 using dog_api.Repositories;
 
 namespace dog_api.Controllers;
 
+[Authorize]
 [Route("api/dog-images")]
 [ApiController]
 public class DogImageController : ControllerBase    //TODO add error handling
