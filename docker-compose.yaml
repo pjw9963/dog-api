@@ -9,3 +9,14 @@ services:
     ports:
       - "5432:5432"
     restart: always
+  dogapi:
+    container_name: dogapi
+    environment:
+      - DataBase__Username=${DataBase__Username}
+      - DataBase__Password=${DataBase__Password}
+      - DataBase__DateBase=${DataBase__DateBase}
+      - DataBase__Port=${DataBase__Port}
+    build: ./src
+    ports:
+      - "80:80"
+      - "443:443"
